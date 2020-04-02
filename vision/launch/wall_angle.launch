@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+
+<launch>
+   <node pkg="vision" type="wall_angle_publisher.py" name="wall_angle" output="screen"/>
+</launch>
