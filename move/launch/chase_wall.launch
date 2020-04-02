@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+
+<launch>
+   <node pkg="move" type="ChaseWall_server.py" name="chase_wall" output="screen"/>
+</launch>
