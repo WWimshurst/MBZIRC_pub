@@ -14,7 +14,7 @@
   </node>
 
   <!-- Run rviz -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find challenge_coordinator)/rviz_config/model.rviz"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find challenge_coordinator)/rviz_config/mbzirc.rviz"/>
   <!--node name="rviz" pkg="rviz" type="rviz"/-->cha
   <!-- Run husky_navigation to start move_base -->
 
