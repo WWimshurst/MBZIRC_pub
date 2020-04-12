@@ -25,10 +25,14 @@ rosservice call /CommandMisc "flag_name: 'block'
 flag_value: false
 flag_value_int: 1" 
 
+![](images_mbz/mbzirc_sim_aligned.png)
+
+
 to view the behaviour of the sysytem:
 rosrun smach_viewer smach_viewer.py 
 
 tf of the working system: 
-
+![](images_mbz/mbzirc_rqt_frmes.png)
 
 rqt_graph of working system:
+![](images_mbz/mbzirc_sim_rqt.png)
