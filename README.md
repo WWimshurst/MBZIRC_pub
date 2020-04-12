@@ -1,9 +1,26 @@
 # MBZIRC_pub
-The first iteration of code used on to simulate a ground robot on the MBZIRC challenge 2:
+The code used to simulate a ground robot on the MBZIRC challenge 2:
 
-This collection of packages provides a simple means of GPS navigation and visual servo-ing towards a colour pattern (yellow and magenta wall). A controller node specific to the challenge is also provided.
+This stack is intented for use as example code, demonstrating: simple gps navigation, simple visual servoing using opencv as well SMACH for behaviour coordination. 
 
-This code is for a clear path robotic husky. The husky is attached with a SICK 2D LIDR, 2 bumblebee cameras, gps as well as the standard components.
+Key dependancies include: Opencv, CVBridge, SMACH and SMACH visualisation, SWRI_transform_util and all clear path husky base packages. 
+The gps_goal package is very lightly modified from http://wiki.ros.org/gps_goal
 
-this repository is still being tidied, dependancies added etc... 
-DO NOT USE YET
+To run the package:
+roslaunch challenge_coordinator challenge2_launch.launch
+roslaunch gps_goal initialize_origin.launch
+rosrun challenge_coordinator Challenge_smach.py
+
+This will lead the clear path husky to the corner of the magenta and yellow wall base and complete alignment.
+To increment along the wall:
+rosservice call /CommandMisc "flag_name: 'block'
+flag_value: false
+flag_value_int: 1" 
+
+to view the behaviour of the sysytem:
+rosrun smach_viewer smach_viewer.py 
+
+tf of the working system: 
+
+
+rqt_graph of working system:
