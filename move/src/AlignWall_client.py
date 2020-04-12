@@ -5,9 +5,9 @@ import rospy
 from move_msgs.srv import *
 
 def align_wall_client(x):
-    rospy.wait_for_service('align_wall')
+    rospy.wait_for_service('move_brick_length')
     try:
-        align_wall = rospy.ServiceProxy('align_wall', AlignWall)
+        align_wall = rospy.ServiceProxy('move_brick_length', AlignWall)
         resp1 = align_wall(x)
         print(resp1.status)
         return resp1.status

@@ -1,11 +1,6 @@
 #!/usr/bin/python
 """
-Gets the position of the wall and it commands to steer the wheels
-Subscribes to
-    /wall/point_wall
 
-Publishes commands to
-    /dkcar/control/cmd_vel
 """
 import math, time
 import rospy
@@ -16,7 +11,7 @@ from std_msgs.msg import Bool
 
 Proportional_constant = 1.0
 Target_offset_constant = 0.4
-
+MAXMIMUM_LINEAR_SPEED = 1.0
 
 def saturate(value, min, max):
     if value <= min:
@@ -25,6 +20,17 @@ def saturate(value, min, max):
         return max
     else:
         return value
+
+
+def get_throttle(wall_y):
+    # top half of the screen
+    if wall_y < 0:
+        return MAXMIMUM_LINEAR_SPEED
+    else:
+        speed =  1/(wall_y*10)
+        if speed > MAXMIMUM_LINEAR_SPEED:
+            return MAXMIMUM_LINEAR_SPEED
+        return speed
 
 
 class WallChaser:
@@ -64,7 +70,7 @@ class WallChaser:
                 # -- publish it
                 self.pub_twist.publish(self._message)
             # if it has arrived at the destination (0.8 implies the corner is low in its field of vision)
-            #if self.wall_y > 0.8 and self.time_undetected > 4:
+            #if self.wall_y > 0.7 and self.time_undetected > 4:
             if self.wall_y > 0.8:
                 print("wall reached")
                 break
@@ -98,7 +104,7 @@ class WallChaser:
             steer_action = saturate(steer_action, -0.4, 0.4)
             rospy.loginfo("Steering command %.2f" % steer_action)
             # --- this is set arbitrarily low, the slower the less likely for oscillation
-            throttle_action = 0.2
+            throttle_action = get_throttle(self.wall_y)
 
         return (steer_action, throttle_action)
 

@@ -1,11 +1,6 @@
 #!/usr/bin/python
 """
-Gets the position of the wall and it commands to steer the wheels
-Subscribes to
-    /wall/point_wall
-
-Publishes commands to
-    /dkcar/control/cmd_vel
+l
 """
 import math, time
 import rospy
