@@ -17,7 +17,7 @@ roslaunch challenge_coordinator challenge2_launch.launch
 roslaunch gps_goal initialize_origin.launch
 rosrun challenge_coordinator Challenge_smach.py
 
-
+![](images_mbz/mbz_sim2.png)
 
 This will lead the clear path husky to the corner of the magenta and yellow wall base and complete alignment.
 To increment along the wall:
