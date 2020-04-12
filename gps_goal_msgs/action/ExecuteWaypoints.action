@@ -1,0 +1,6 @@
+#sensor_msgs/NavSatFix[] waypoints
+geometry_msgs/Point[] waypoints
+---
+int64 result
+---
+int64 waypointReached

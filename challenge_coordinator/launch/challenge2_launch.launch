@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <include file="$(find husky_gazebo)/launch/husky_MBZIRC.launch">
+  </include>
+  <include file="$(find husky_navigation)/launch/gmapping.launch"/>
+
+  <rosparam command="load" file="$(find gps_goal)/params/navsat_params_sim.yaml"/>
+  <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform" clear_params="true">
+    <remap from="odometry/filtered" to="odometry/filtered_map"/>
+    <remap from="gps/fix" to="/navsat/fix"/>
+    <remap from="imu/data" to="/imu/data"/>
+  </node>
+
+  <!-- Run rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find challenge_coordinator)/rviz_config/model.rviz"/>
+  <!--node name="rviz" pkg="rviz" type="rviz"/-->cha
+  <!-- Run husky_navigation to start move_base -->
+
+  <include file="$(find husky_navigation)/launch/move_base.launch"/>
+
+   <node pkg="gps_goal" type="gps_goals_action_server.py" name="gps_goals" output="screen">
+     <param name="frame_id" value="map"/>
+     <remap from="gps_goal_pose" to="gps_goal_pose" />
+     <remap from="gps_goal_fix" to="gps_goal_fix" />
+     <remap from="local_xy_origin" to="local_xy_origin" />
+   </node>
+
+    <include file="$(find vision)/launch/wall_corner.launch"/>
+    <include file="$(find vision)/launch/wall_angle.launch"/>
+    <node pkg="move" type="ChaseWall_server.py" name="chase_wall" output="screen"/>
+    <node pkg="move" type="AlignWall_server.py" name="align_wall" output="screen"/>
+    <!--include file="$(find vision)/launch/wall_angle.launch"/-->
+
+
+   <!--node pkg="challenge_coordinator" type="challenge2_full.py" name="coordinator_node" output="screen"/-->
+
+</launch>

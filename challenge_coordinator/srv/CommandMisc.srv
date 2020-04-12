@@ -1,0 +1,5 @@
+string flag_name
+bool flag_value
+int64 flag_value_int
+---
+int64 status
