@@ -10,7 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   geometry_msgs
   move_base_msgs
-  gps_navigation_msgs
+  gps_goal_msgs
 )
 
 
