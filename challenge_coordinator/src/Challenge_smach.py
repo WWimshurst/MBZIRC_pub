@@ -24,7 +24,7 @@ command_misc_int = 1
 
 
 def get_waypoints():
-    lines = loadtxt("catkin_ws/src/waypoint_test/waypoints/points_outdoor.txt", delimiter=" ")
+    lines = loadtxt("catkin_ws_smach/src/gps_goal/waypoints/points_outdoor.txt", delimiter=" ")
     return lines
 
 
