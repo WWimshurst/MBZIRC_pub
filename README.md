@@ -36,3 +36,9 @@ tf of the working system:
 
 rqt_graph of working system:
 ![](images_mbz/mbzirc_sim_rqt.png)
+
+
+
+some packages needed for working on a real husky on ros kientic include:
+laser_filters
+pointgrey_camera_driver
