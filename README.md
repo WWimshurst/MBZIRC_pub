@@ -6,11 +6,11 @@ This stack is intented for use as example code, demonstrating: simple gps naviga
 Key dependancies include: Opencv, CVBridge, SMACH and SMACH visualisation, SWRI_transform_util and all clear path husky base packages. 
 The gps_goal package is very lightly modified from http://wiki.ros.org/gps_goal
 
-To implement:
-1)copy the my_ground_plan directory to your ~/.gazebo/models folder
-2) install dependancies listed
-3) add all folders other than /images and /my_ground_plan to a catkin src folder
-4_ build catkin_ws
+To implement:  
+1)copy the my_ground_plan directory to your ~/.gazebo/models folder    
+2) install dependancies listed  
+3) add all folders other than /images and /my_ground_plan to a catkin src folder  
+4_ build catkin_ws  
 
 To run the package:
 roslaunch challenge_coordinator challenge2_launch.launch
