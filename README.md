@@ -37,7 +37,7 @@ tf of the working system:
 rqt_graph of working system:  
 ![](images_mbz/mbzirc_sim_rqt.png)
 
-
+REMEMBER: make python nodes executbale: sudo chmod +x [filename.py]  
 
 some packages needed for working on a real husky on ros kientic include:
 laser_filters
